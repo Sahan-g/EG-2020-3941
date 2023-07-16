@@ -1,0 +1,103 @@
+﻿<Window x:Class="WpfApp1.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApp1"
+        mc:Ignorable="d"
+        WindowStyle="None"
+        AllowsTransparency="True"
+        Background="Transparent"
+        Title="MainWindow" Height="800" Width="800">
+    <Window.DataContext>
+        <local:MainWindowVM/>
+    </Window.DataContext>
+    <Border  CornerRadius="20" Background="#3C1642" >
+     
+           
+       
+
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="100"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <StackPanel>
+                <TextBlock Text="Student Management System" FontFamily="/Fonts/#Poppins"
+                       HorizontalAlignment="Center"
+                       VerticalAlignment="Center"
+                       Foreground="White"
+                       FontSize="30"
+                       FontWeight="Bold" Margin="10 10 10 10"/>
+                <Border Width="600" BorderThickness="2" Background="#E7E6F7"  Height="10" 
+                        CornerRadius="10"
+                        
+                       >
+                </Border>
+            </StackPanel>
+            <Grid Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition  Width="600"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Border Margin="30" Background="#FFE3E0" CornerRadius="10"> 
+                    <StackPanel>
+
+                        <!--<StackPanel Orientation="Horizontal">
+                            <TextBlock Text="First Name" Margin="70 10 20 10" FontSize="20" />
+                            <TextBlock Text="Last Name" Margin="10 10 20 10" FontSize="20"/>
+                            <TextBlock Text="DOB" Margin="10 10 20 10" FontSize="20"/>
+                            <TextBlock Text="Age" Margin="10 10 20 10" FontSize="20"/>
+                            <TextBlock Text="GPA" Margin="10 10 20 10" FontSize="20"/>
+
+                        </StackPanel>-->
+                        <ScrollViewer Width="500" Height="600" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto"
+                                      BorderThickness="0">
+                            <ListView ItemsSource="{Binding Students,UpdateSourceTrigger=PropertyChanged}" Background="#FFE3E0" Width="435" BorderThickness="0"
+                                      SelectedItem="{Binding SelectedStudent,UpdateSourceTrigger=PropertyChanged}">
+                                <ListView.ItemTemplate>
+                                    <DataTemplate>
+                                        <Border  Padding="5" BorderBrush="Black" CornerRadius="10" Margin="5 20  5 5" BorderThickness="1" MinWidth="400"
+                                                 Background="#119DA4">
+
+                                            <StackPanel Orientation="Horizontal">
+                                                <Image Source="{Binding Image,UpdateSourceTrigger=PropertyChanged}" Width="40" Height="50" />
+                                                <TextBlock Margin="5" Padding=" 5" FontSize="20" Text="{Binding FirstName,UpdateSourceTrigger=PropertyChanged}"/>
+                                                <TextBlock Margin="0 5 5  5" Padding=" 5" FontSize="20" Text="{Binding LastName,UpdateSourceTrigger=PropertyChanged }"/>
+                                                <TextBlock Margin="5" Padding=" 5" FontSize="20" Text="{Binding Age,UpdateSourceTrigger=PropertyChanged}"/>
+                                                <TextBlock Margin="5" Padding="5" FontSize="20" Text="{Binding GPA,UpdateSourceTrigger=PropertyChanged}"/>
+                                                <TextBlock Margin="5" Padding="5" FontSize="20" Text="{Binding BirthdayString,UpdateSourceTrigger=PropertyChanged}"/>
+                                            </StackPanel>
+
+                                        </Border>
+
+                                    </DataTemplate>
+                                </ListView.ItemTemplate>
+                            </ListView>
+                        </ScrollViewer>
+
+                    </StackPanel>
+                </Border>
+                <StackPanel Grid.Column=" 1">
+                    <Button Content="Add Student" VerticalAlignment="Center" HorizontalAlignment="Left" FontSize="14" MinWidth="150" FontWeight="Bold"
+                            Margin="30 200 0 0" Style="{StaticResource MainWindow Button}" Padding="5" Command="{Binding AddStudentCommand}" />
+                    <Button  Content="Edit Student" VerticalAlignment="Center" 
+                             HorizontalAlignment="Left" Margin="30 15 0 0" Padding="5"   FontSize="14" FontWeight="Bold" MinWidth="150"
+                             Style="{StaticResource MainWindow Button}" Command="{Binding EditStudentCommand}" />
+                    <Button Content="Delete Student" Margin="30 15 0 0" VerticalAlignment="Center" Padding="5"  MinWidth="150" FontWeight="Bold"
+                            HorizontalAlignment="Left" Command="{Binding DeleteStudentCommand}" CommandParameter="{Binding SelectedStudent}"
+                            Style="{StaticResource MainWindow Button}"/>
+                    <Button Content="Exit" Margin="30 15 0 0" VerticalAlignment="Center" Padding="5"  MinWidth="150" FontWeight="Bold"
+                            HorizontalAlignment="Left"
+                            Style="{StaticResource MainWindow Button}"  Command="{Binding ExitCommand}" />
+
+
+                </StackPanel>
+
+
+            </Grid>
+        </Grid>
+    </Border>
+
+</Window>
