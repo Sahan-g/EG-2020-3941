@@ -52,7 +52,7 @@ namespace WpfApp1
                     {
                         Student1.FirstName = FirstName;
                         Student1.LastName = LastName;
-                        Student1.Age = age;
+                        Student1.Age = DateTime.Now.Year-Dob.Year;
                         Student1.Birthday = dob;
                         Student1.GPA = Gpa;
                         Student1.Image = img;
@@ -74,7 +74,7 @@ namespace WpfApp1
 
                         Student1.FirstName = FirstName;
                         Student1.LastName = LastName;
-                        Student1.Age = age;
+                        Student1.Age = DateTime.Now.Year - Dob.Year;
                         Student1.Birthday = dob;
                         Student1.GPA = Gpa;
                         Student1.Image = img;
